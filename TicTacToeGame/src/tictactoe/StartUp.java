@@ -138,7 +138,8 @@ public class StartUp extends javax.swing.JFrame {
             Interface game = new Interface();
             game.setLocation(this.getLocation());
             game.setVisible(true);
-            game.option="machine";
+            game.optionSelect("machine");
+            //game.option="machine";
             this.dispose();
         } catch (UnsupportedLookAndFeelException ex) {
             Logger.getLogger(StartUp.class.getName()).log(Level.SEVERE, null, ex);
@@ -157,7 +158,8 @@ public class StartUp extends javax.swing.JFrame {
             Interface game = new Interface();
             game.setLocation(this.getLocation());
             game.setVisible(true);
-            game.option="human";
+            game.optionSelect("human");
+            //game.option="human";
             this.dispose();
         } catch (UnsupportedLookAndFeelException ex) {
             Logger.getLogger(StartUp.class.getName()).log(Level.SEVERE, null, ex);

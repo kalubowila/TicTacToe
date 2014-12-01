@@ -26,12 +26,12 @@ public class Interface extends javax.swing.JFrame {
      * Creates new form Interface
      */
     JButton button[] = new JButton[9];
-    boolean x, o;
-    boolean lock[] = new boolean[9];
-    Human human;
-    Machine machine;
-    int count,plyr1=0,plyr2=0,total=0;
-    String option;
+    private boolean x, o;
+    private boolean lock[] = new boolean[9];
+    private Human human;
+    private Machine machine;
+    private int count,plyr1=0,plyr2=0,total=0;
+    private String option;
 
     public Interface() throws UnsupportedLookAndFeelException {
         try {
@@ -437,6 +437,7 @@ public class Interface extends javax.swing.JFrame {
     private javax.swing.JLabel player2;
     // End of variables declaration//GEN-END:variables
 
+    /**initialize buttons and locks**/
     protected void initButton() {
         count = 0;
 
@@ -457,6 +458,7 @@ public class Interface extends javax.swing.JFrame {
 
     }
 
+    /**set relevant sign to relevant button (both machine and human actions are performed)*/
     protected void set(int index) {
         switch (option) {
             case "machine":
@@ -471,7 +473,7 @@ public class Interface extends javax.swing.JFrame {
                         if (count == 9) {
                             total++;
                             JOptionPane.showMessageDialog(null, "GAME DRAW", "Game Condition", 1);
-                            Total.setText(String.valueOf(total));
+                            Total.setText(String.valueOf(total));  //total played games (suitable place to mysql)
                             initButton();
                             setOption("machine");
 
@@ -486,7 +488,7 @@ public class Interface extends javax.swing.JFrame {
                         if (count == 9) {
                             total++;
                             JOptionPane.showMessageDialog(null, "GAME DRAW", "Game Condition", 1);
-                            Total.setText(String.valueOf(total));
+                            Total.setText(String.valueOf(total));  //total played games (suitable place to mysql)
                             initButton();
                             setOption("machine");
 
@@ -536,7 +538,7 @@ public class Interface extends javax.swing.JFrame {
         if (count == 9) {
             total++;
             JOptionPane.showMessageDialog(null, "GAME DRAW", "Game Condition", 1);
-            Total.setText(String.valueOf(total));
+            Total.setText(String.valueOf(total));  //total played games (suitable place to mysql)
             initButton();
         }
     }
@@ -588,7 +590,7 @@ public class Interface extends javax.swing.JFrame {
 
     void printPlayer1() {
         Player1marks.setText(String.valueOf(plyr1));
-        Total.setText(String.valueOf(total));
+        Total.setText(String.valueOf(total));  //Player 1 winning games (suitable place to mysql)
     }
 
     void incrementPlayer2() {
@@ -598,7 +600,12 @@ public class Interface extends javax.swing.JFrame {
 
     void printPlayer2() {
         Player2marks.setText(String.valueOf(plyr2));
-        Total.setText(String.valueOf(total));
+        Total.setText(String.valueOf(total));   //Player 2 winning games (suitable place to mysql)
+    }
+
+    /**assign the option (machine/human) to this.option variable**/
+    void optionSelect(String op) {
+        this.option=op;     //decision can be made when save using mySql
     }
 
 
